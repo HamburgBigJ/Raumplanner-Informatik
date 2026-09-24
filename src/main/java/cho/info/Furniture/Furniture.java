@@ -2,6 +2,7 @@ package cho.info.Furniture;
 
 import cho.info.Leinwand;
 import cho.info.register.ObjectRegister;
+import lombok.Data;
 
 import java.awt.*;
 import java.awt.geom.AffineTransform;
