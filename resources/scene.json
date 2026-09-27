@@ -1,0 +1,15 @@
+{
+  "name": "Main",
+  "objects": {
+    "Test": {
+      "id": "Empty",
+      "xPos": 200,
+      "yPos": 200,
+      "rotation": 0,
+      "scale": 1
+    }
+  },
+
+
+  "Example": "Example for entety json system"
+}
