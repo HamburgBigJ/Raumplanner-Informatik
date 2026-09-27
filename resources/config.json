@@ -1,0 +1,10 @@
+{
+  "App": {
+    "Name": "RaumPlanner",
+    "width": 800,
+    "height": 450,
+    "fpsTarget": 60,
+
+    "BackgroundColor": "WHITE"
+  }
+}

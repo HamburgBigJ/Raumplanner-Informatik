@@ -1,37 +1,58 @@
 package cho.info.renderer;
 
 import cho.info.components.RenderCommand;
+import cho.info.config.Config;
+import cho.info.config.ConfigLoader;
 import cho.info.game.Player;
 import cho.info.gameObjects.BehaviourBackend;
+import com.google.gson.Gson;
+import com.raylib.Colors;
 import com.raylib.Raylib;
 import io.github.elebras1.flecs.Entity;
 import io.github.elebras1.flecs.Flecs;
 import io.github.elebras1.flecs.World;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-import static com.raylib.Colors.RAYWHITE;
+import static com.raylib.Colors.*;
 import static com.raylib.Raylib.InitWindow;
 import static com.raylib.Raylib.SetTargetFPS;
 
 public class Helix {
 
     public static Helix INSTANCE;
-
     private World world;
-
     public static boolean isRunning;
+
+    private Raylib.Color bakcroundColor;
 
     public void init() {
         INSTANCE = this;
         isRunning = true;
         String appHomeDir = System.getenv("APP_HOME");
 
+
+        Config.AppConfig appC = ConfigLoader.load().app();
+
+        bakcroundColor = switch (appC.backgroundColor()) {
+            case "WHITE" -> Colors.WHITE;
+            case "RAYWHITE" -> Colors.RAYWHITE;
+            case "BLACK" -> Colors.BLACK;
+            case "BLUE" -> Colors.BLUE;
+            case "RED" -> Colors.RED;
+            default -> throw new IllegalArgumentException(
+                    appC.backgroundColor() + " Not supported"
+            );
+        };
+
         this.world = new World();
 
-        InitWindow(800, 450, "Raumplaner");
-        SetTargetFPS(60);
+        InitWindow(appC.width(), appC.height(), appC.name());
+        SetTargetFPS(appC.fpsTarget());
 
         BehaviourBackend.init(world, RenderQueue.renderQueue);
 
@@ -58,7 +79,7 @@ public class Helix {
                 if (!world.progress()) break;
 
                 Raylib.BeginDrawing();
-                    Raylib.ClearBackground(RAYWHITE);
+                    Raylib.ClearBackground(bakcroundColor);
 
                     RenderCommand command;
                     while ((command = RenderQueue.renderQueue.poll()) != null) {
