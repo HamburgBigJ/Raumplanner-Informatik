@@ -1,6 +1,6 @@
-package cho.info.script;
+package cho.info.old.script;
 
-import cho.info.gameObjects.GameObject;
+import cho.info.old.gameObjects.GameObject;
 
 public class MonoBehaviour {
     protected GameObject gameObject;

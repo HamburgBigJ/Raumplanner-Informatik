@@ -1,6 +1,6 @@
-package cho.info.components.commands;
+package cho.info.old.components.commands;
 
-import cho.info.components.RenderCommand;
+import cho.info.old.components.RenderCommand;
 
 public class EmptyCommand implements RenderCommand {
     @Override

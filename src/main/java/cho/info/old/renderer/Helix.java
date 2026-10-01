@@ -1,24 +1,15 @@
-package cho.info.renderer;
+package cho.info.old.renderer;
 
-import cho.info.components.RenderCommand;
+import cho.info.old.components.RenderCommand;
 import cho.info.config.Config;
 import cho.info.config.ConfigLoader;
-import cho.info.game.Player;
-import cho.info.gameObjects.BehaviourBackend;
-import com.google.gson.Gson;
+import cho.info.old.game.Player;
+import cho.info.old.gameObjects.BehaviourBackend;
 import com.raylib.Colors;
 import com.raylib.Raylib;
-import io.github.elebras1.flecs.Entity;
 import io.github.elebras1.flecs.Flecs;
 import io.github.elebras1.flecs.World;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Queue;
-import java.util.concurrent.ConcurrentLinkedQueue;
-
-import static com.raylib.Colors.*;
 import static com.raylib.Raylib.InitWindow;
 import static com.raylib.Raylib.SetTargetFPS;
 

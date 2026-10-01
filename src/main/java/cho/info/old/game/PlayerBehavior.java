@@ -1,6 +1,6 @@
-package cho.info.game;
+package cho.info.old.game;
 
-import cho.info.script.MonoBehaviour;
+import cho.info.old.script.MonoBehaviour;
 import static com.raylib.Raylib.*;
 
 public class PlayerBehavior extends MonoBehaviour {

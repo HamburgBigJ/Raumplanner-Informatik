@@ -1,6 +1,6 @@
-package cho.info.gameObjects;
+package cho.info.old.gameObjects;
 
-import cho.info.components.RenderCommand;
+import cho.info.old.components.RenderCommand;
 import io.github.elebras1.flecs.Flecs;
 import io.github.elebras1.flecs.World;
 
@@ -29,9 +29,9 @@ public final class BehaviourBackend {
         Objects.requireNonNull(ecsWorld);
         Objects.requireNonNull(renderQueue);
 
-        long tag = ecsWorld.entity("JavaGameObject");
+        long tag = ecsWorld.entity("HE_WORLD");
 
-        ecsWorld.system("JavaBehaviourUpdate")
+        ecsWorld.system("HE_BehaviorUpdate")
                 .kind(Flecs.OnUpdate)
                 .with(tag)
                 .run(it -> {

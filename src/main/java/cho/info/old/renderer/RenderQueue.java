@@ -1,7 +1,7 @@
-package cho.info.renderer;
+package cho.info.old.renderer;
 
-import cho.info.components.RenderCommand;
-import cho.info.components.commands.EmptyCommand;
+import cho.info.old.components.RenderCommand;
+import cho.info.old.components.commands.EmptyCommand;
 
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;

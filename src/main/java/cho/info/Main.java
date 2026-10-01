@@ -1,28 +1,14 @@
 package cho.info;
 
-import cho.info.renderer.Helix;
+import cho.info.old.renderer.Helix;
+import io.github.elebras1.flecs.World;
 
 public class Main {
 
-    public static Main INCACe;
-
 
     public static void main(String[] args) {
-        new Helix().init();
-        Helix.INSTANCE.run();
-
+        App app = new App();
+        app.init();
     }
-
-
-
-    /*
-            Leinwand.gibLeinwand();
-
-        new Stuhl().registerObject();
-        new Tisch().registerObject();
-        new Klavier().registerObject();
-
-        ObjectRegister.drawAllObjects();
-     */
 
 }

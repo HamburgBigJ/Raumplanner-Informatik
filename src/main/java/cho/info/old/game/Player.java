@@ -1,7 +1,6 @@
-package cho.info.game;
+package cho.info.old.game;
 
-import cho.info.gameObjects.BehaviourBackend;
-import cho.info.gameObjects.GameObject;
+import cho.info.old.gameObjects.GameObject;
 import com.raylib.Raylib;
 
 import static com.raylib.Colors.BLUE;

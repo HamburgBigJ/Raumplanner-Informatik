@@ -1,7 +1,8 @@
-package cho.info.gameObjects;
+package cho.info.old.gameObjects;
 
-import cho.info.components.RenderCommand;
-import cho.info.script.MonoBehaviour;
+import cho.info.old.components.GameComponent;
+import cho.info.old.components.RenderCommand;
+import cho.info.old.script.MonoBehaviour;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +15,7 @@ public abstract class GameObject {
 
     private final long entityId;
     private final List<MonoBehaviour> behaviours = new ArrayList<>();
+    private final List<GameComponent> components = new ArrayList<>();
 
     protected GameObject(String id) {
         this._ObId = Objects.requireNonNull(id);
@@ -44,9 +46,32 @@ public abstract class GameObject {
         return null;
     }
 
+    public <T extends GameComponent> T addComponent(T component) {
+        Objects.requireNonNull(component).attach(this);
+        components.add(component);
+        return component;
+    }
+
+    public <T extends GameComponent> T getComponent(Class<T> type) {
+        for  (GameComponent component : components) {
+            if (type.isInstance(component)) {
+                return type.cast(component);
+            }
+        }
+
+        return null;
+
+    }
+
     final void updateBehaviours(float deltaTime) {
         for (MonoBehaviour behaviour : List.copyOf(behaviours)) {
             behaviour.tick(deltaTime);
+        }
+    }
+
+    final void updateComponents(float deltaTime) {
+        for (GameComponent component : List.copyOf(components)) {
+            component.tick(deltaTime);
         }
     }
 
