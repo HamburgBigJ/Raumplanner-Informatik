@@ -7,6 +7,6 @@ public final class ModEntryPoint {
 
     public static void onInitialize() {
         System.out.println("[Raumplanner-Mod] Mod initialized.");
-
+        // Add your initialization code here. The room planner starts afterwards.
     }
 }
