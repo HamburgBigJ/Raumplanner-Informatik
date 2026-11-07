@@ -1,14 +1,9 @@
 package cho.info;
 
-import cho.info.old.renderer.Helix;
-import io.github.elebras1.flecs.World;
+import cho.info.furniture.Chair;
 
 public class Main {
-
-
     public static void main(String[] args) {
-        App app = new App();
-        app.init();
+        new Chair();
     }
-
 }
