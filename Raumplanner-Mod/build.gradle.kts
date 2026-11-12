@@ -21,6 +21,7 @@ tasks.withType<JavaCompile>().configureEach {
 
 dependencies {
     compileOnly(files(agentJar))
+    compileOnly(project(":"))
 }
 
 val modJar = tasks.named<Jar>("jar")

@@ -1,12 +1,16 @@
 package cho.info.roomplannermod;
 
-/** Entry point called once when the room planner's main method starts. */
+import cho.info.rendering.RoomCanvas;
+import cho.info.roomplannermod.mixin.RoomCanvasMixin;
+
 public final class ModEntryPoint {
     private ModEntryPoint() {
     }
 
     public static void onInitialize() {
         System.out.println("[Raumplanner-Mod] Mod initialized.");
-        // Add your initialization code here. The room planner starts afterwards.
+
+        //RoomCanvas.getInstance().grapics();
+
     }
 }

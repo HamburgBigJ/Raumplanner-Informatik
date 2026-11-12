@@ -5,10 +5,7 @@ import java.awt.geom.GeneralPath;
 import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
 
-/** A top-down piano outline for the room planner.
- *
- * @author Claus Albowski
- */
+
 public class Piano extends Furniture {
     public Piano() {
         super(200, 80, "red", 140, 60);

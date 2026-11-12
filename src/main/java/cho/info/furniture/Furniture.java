@@ -6,7 +6,6 @@ import java.awt.Shape;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
 
-/** Shared position, dimensions, visibility, and drawing behavior for furniture. */
 public abstract class Furniture {
     private int xPosition;
     private int yPosition;
@@ -85,10 +84,8 @@ public abstract class Furniture {
         this.depth = depth;
     }
 
-    /** Creates the furniture outline in local coordinates. */
     protected abstract Shape createShape();
 
-    /** Applies position and rotation around the outline's center. */
     protected final Shape getShape() {
         Shape shape = createShape();
         Rectangle2D bounds = shape.getBounds2D();
@@ -108,6 +105,11 @@ public abstract class Furniture {
     public void hide() {
         erase();
         visible = false;
+    }
+
+    public void reDraw() {
+        hide();
+        show();
     }
 
     public void rotateTo(int angle) {
@@ -133,7 +135,6 @@ public abstract class Furniture {
         draw();
     }
 
-    /** Scales both dimensions, truncating fractional pixels. */
     public void scaleBy(double factor) {
         erase();
         width = (int) (width * factor);
@@ -141,7 +142,6 @@ public abstract class Furniture {
         draw();
     }
 
-    /** Preserves the original alternative scaling exercise's width rounding. */
     public void scaleWithRoundedWidth(float factor) {
         erase();
         width = Math.round(width * factor);
@@ -149,7 +149,6 @@ public abstract class Furniture {
         draw();
     }
 
-    /** Snaps rotation to a cardinal direction using the original angle thresholds. */
     public void snapRotation() {
         int snappedRotation;
         if (rotation < 45) {
@@ -166,7 +165,6 @@ public abstract class Furniture {
         rotateTo(snappedRotation);
     }
 
-    /** Alternative snapping exercise; the upper threshold can snap to 360 degrees. */
     public void snapRotationUsingLoop() {
         for (int direction = 0; direction < 5; direction++) {
             if (rotation < direction * 90 + 45) {
@@ -176,7 +174,6 @@ public abstract class Furniture {
         }
     }
 
-    /** Snaps the horizontal position to the original 50-pixel grid between 0 and 400. */
     public void snapXPosition() {
         int snappedPosition = 400;
         for (int gridPosition = 0; gridPosition < 400; gridPosition += 50) {
@@ -188,7 +185,6 @@ public abstract class Furniture {
         setPosition(snappedPosition, yPosition);
     }
 
-    /** Alternative grid exercise; halfway values round down and positions are not clamped. */
     public void snapXPositionWithoutBounds() {
         float gridPosition = (float) xPosition / 50;
         if (gridPosition - (int) gridPosition > 0.5) {

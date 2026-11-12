@@ -5,10 +5,6 @@ import java.awt.geom.Ellipse2D;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Rectangle2D;
 
-/** A top-down washing machine outline for the room planner.
- *
- * @author Claus Albowski
- */
 public class WashingMachine extends Furniture {
     public WashingMachine() {
         super(150, 120, "red", 60, 60);

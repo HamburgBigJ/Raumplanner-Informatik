@@ -12,12 +12,6 @@ import java.io.Serial;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-/**
- * A shared Swing canvas that draws furniture outlines in insertion order.
- *
- * Adapted from the educational canvas by Bruce Quig, Michael Kölling,
- * Axel Schmolitzky, the Java-MS Groupies, and Uwe Debacher.
- */
 public class RoomCanvas {
     private static RoomCanvas instance;
 

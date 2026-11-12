@@ -3,13 +3,10 @@ package cho.info.furniture;
 import java.awt.Shape;
 import java.awt.geom.GeneralPath;
 
-/** A top-down chair outline for the room planner.
- *
- * @author Claus Albowski
- */
+
 public class Chair extends Furniture {
     public Chair() {
-        this(10, 10, "red");
+        this(10, 10, "");
         show();
     }
 

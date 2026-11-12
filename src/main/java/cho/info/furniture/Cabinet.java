@@ -3,10 +3,6 @@ package cho.info.furniture;
 import java.awt.Shape;
 import java.awt.geom.GeneralPath;
 
-/** A top-down cabinet outline for the room planner.
- *
- * @author Claus Albowski
- */
 public class Cabinet extends Furniture {
     public Cabinet() {
         this(200, 80, "red", 0, 110, 60);
