@@ -1,14 +1,14 @@
 package cho.info.furniture;
 
-import java.awt.Shape;
+import java.awt.*;
 import java.awt.geom.GeneralPath;
 
 public class Cabinet extends Furniture {
     public Cabinet() {
-        this(200, 80, "red", 0, 110, 60);
+        this(200, 80, Color.RED, 0, 110, 60);
     }
 
-    public Cabinet(int xPosition, int yPosition, String color, int rotation, int width, int depth) {
+    public Cabinet(int xPosition, int yPosition, Color color, int rotation, int width, int depth) {
         super(xPosition, yPosition, color, width, depth);
         setRotation(rotation);
     }

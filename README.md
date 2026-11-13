@@ -17,7 +17,7 @@ See [the mod README](Raumplanner-Mod/README.md) for details.
 
 - `cho.info.Main`: application entry point and chair demo.
 - `cho.info.furniture`: the shared `Furniture` model and `Chair`, `Table`, `Piano`, `Cabinet`, `WallUnit`, and `WashingMachine` outlines.
-- `cho.info.rendering`: the Swing `RoomCanvas`, drawing order, and color handling.
+- `cho.info.rendering`: the Swing `Window`, drawing order, and color handling.
 
 `Furniture` handles movement, rotation, scaling, visibility, and coordinate transforms.
 Each furniture class defines its outline in local coordinates through `createShape()`.

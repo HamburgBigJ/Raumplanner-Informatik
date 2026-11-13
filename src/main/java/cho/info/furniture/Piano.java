@@ -1,6 +1,6 @@
 package cho.info.furniture;
 
-import java.awt.Shape;
+import java.awt.*;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
@@ -8,7 +8,7 @@ import java.awt.geom.Rectangle2D;
 
 public class Piano extends Furniture {
     public Piano() {
-        super(200, 80, "red", 140, 60);
+        super(200, 80, Color.RED, 140, 60);
         show();
     }
 

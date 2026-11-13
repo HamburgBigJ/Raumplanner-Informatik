@@ -1,11 +1,11 @@
 package cho.info.furniture;
 
-import java.awt.Shape;
+import java.awt.*;
 import java.awt.geom.Ellipse2D;
 
 public class Table extends Furniture {
     public Table() {
-        super(150, 120, "red", 120, 100);
+        super(150, 120, Color.RED, 120, 100);
         show();
     }
 

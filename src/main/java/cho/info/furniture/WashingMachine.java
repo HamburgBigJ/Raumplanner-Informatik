@@ -1,13 +1,13 @@
 package cho.info.furniture;
 
-import java.awt.Shape;
+import java.awt.*;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Rectangle2D;
 
 public class WashingMachine extends Furniture {
     public WashingMachine() {
-        super(150, 120, "red", 60, 60);
+        super(150, 120, Color.RED, 60, 60);
         show();
     }
 

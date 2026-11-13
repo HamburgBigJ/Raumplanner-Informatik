@@ -1,16 +1,16 @@
 package cho.info.furniture;
 
-import java.awt.Shape;
+import java.awt.*;
 import java.awt.geom.GeneralPath;
 
 
 public class Chair extends Furniture {
     public Chair() {
-        this(10, 10, "");
+        this(10, 10, Color.BLACK);
         show();
     }
 
-    public Chair(int xPosition, int yPosition, String color) {
+    public Chair(int xPosition, int yPosition, Color color) {
         super(xPosition, yPosition, color, 40, 40);
     }
 

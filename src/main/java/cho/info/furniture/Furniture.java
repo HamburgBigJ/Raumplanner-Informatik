@@ -1,8 +1,9 @@
 package cho.info.furniture;
 
-import cho.info.rendering.RoomCanvas;
+import cho.info.Main;
+import cho.info.rendering.Window;
 
-import java.awt.Shape;
+import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
 
@@ -10,17 +11,22 @@ public abstract class Furniture {
     private int xPosition;
     private int yPosition;
     private int rotation;
-    private String color;
+    private Color color;
     private boolean visible;
     private int width;
     private int depth;
+    private Window window;
 
-    protected Furniture(int xPosition, int yPosition, String color, int width, int depth) {
+    protected Furniture(int xPosition, int yPosition, Color color, int width, int depth) {
         this.xPosition = xPosition;
         this.yPosition = yPosition;
         this.color = color;
         this.width = width;
         this.depth = depth;
+    }
+
+    public Furniture(Window window) {
+        this.window = window;
     }
 
     // Property setters update the model; movement and appearance operations also redraw it.
@@ -48,11 +54,13 @@ public abstract class Furniture {
         this.rotation = rotation;
     }
 
-    public String getColor() {
+    public Shape getObjectShape() {return getShape();}
+
+    public Color getColor() {
         return color;
     }
 
-    public void setColor(String color) {
+    public void setColor(Color color) {
         this.color = color;
     }
 
@@ -205,15 +213,15 @@ public abstract class Furniture {
         setPosition(xPosition, yPosition + distance);
     }
 
-    public void changeColor(String color) {
+    public void changeColor(Color color) {
         erase();
         this.color = color;
         draw();
     }
 
-    private void draw() {
+    /*private void draw() {
         if (visible) {
-            RoomCanvas canvas = RoomCanvas.getInstance();
+            Window canvas = window;
             canvas.draw(this, color, getShape());
             canvas.pause(10);
         }
@@ -221,7 +229,9 @@ public abstract class Furniture {
 
     private void erase() {
         if (visible) {
-            RoomCanvas.getInstance().remove(this);
+            window.remove(this);
         }
     }
+    */
+
 }

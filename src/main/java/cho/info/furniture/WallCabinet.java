@@ -1,8 +1,9 @@
 package cho.info.furniture;
 
-import cho.info.rendering.RoomCanvas;
+import cho.info.Main;
+import cho.info.rendering.Window;
 
-import java.awt.Shape;
+import java.awt.*;
 import java.awt.geom.GeneralPath;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +13,7 @@ public class WallCabinet extends Furniture {
     private int cabinetCount;
 
     public WallCabinet(int cabinetCount) {
-        super(40, 80, "blue", 40, 37);
+        super(40, 80, Color.BLUE, 40, 37);
         this.cabinetCount = cabinetCount;
         /*for (int cabinetIndex = 0; cabinetIndex < cabinetCount; cabinetIndex++) {
             cabinets.add(new Cabinet(
@@ -40,8 +41,9 @@ public class WallCabinet extends Furniture {
     public void setCabinets(int a) {
         cabinetCount = a;
         for (Cabinet cabinet : cabinets) {
-            RoomCanvas.getInstance().remove(cabinet);
+            Main.mainWindow.remove(cabinet);
         }
+        // TODO: DO not clear list when updating cabinets
         cabinets.clear();
         shapeToArray();
         reDraw();

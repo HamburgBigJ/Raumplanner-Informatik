@@ -1,5 +1,7 @@
 package cho.info.rendering;
 
+import cho.info.furniture.Furniture;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.Color;
@@ -9,11 +11,12 @@ import java.awt.Graphics2D;
 import java.awt.Shape;
 import java.awt.image.BufferedImage;
 import java.io.Serial;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class RoomCanvas {
-    private static RoomCanvas instance;
+public class Window {
+    //private static Window instance;
 
     private final JFrame window;
     private final DrawingPanel drawingPanel;
@@ -21,8 +24,9 @@ public class RoomCanvas {
     private final BufferedImage canvasImage;
     private final Graphics2D graphics;
     private final Map<Object, ColoredShape> shapes = new LinkedHashMap<>();
+    private final ArrayList<Furniture> furnitures = new ArrayList<>();
 
-    private RoomCanvas(String title, int width, int height, Color backgroundColor) {
+    public Window(String title, int width, int height, Color backgroundColor) {
         this.backgroundColor = backgroundColor;
         canvasImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
         graphics = canvasImage.createGraphics();
@@ -34,41 +38,48 @@ public class RoomCanvas {
         clear();
     }
 
-    public static RoomCanvas getInstance() {
+    /*public static Window getInstance() {
         if (instance == null) {
-            instance = new RoomCanvas("Room Planner", 400, 400, Color.WHITE);
+            instance = new Window("Room Planner", 400, 400, Color.WHITE);
         }
         instance.setVisible(true);
         return instance;
+    }*/
+
+    public void append(Furniture furniture) {
+        furnitures.add(furniture);
+    }
+
+    public void remFurni(Furniture furniture) {
+        furnitures.remove(furniture);
     }
 
     public void setVisible(boolean visible) {
         window.setVisible(visible);
     }
 
-    public void draw(Object owner, String color, Shape shape) {
+    public void draw() {
+        for (Furniture furniture : furnitures) {
+            draw(this, furniture.getColor(), furniture.get);
+            pause(10);
+        }
+    }
+
+    public void canvasDraw(Object owner, Color color, Shape shape) {
         // Redrawn objects move to the front of the drawing order.
+
         shapes.remove(owner);
         shapes.put(owner, new ColoredShape(shape, color));
         redraw();
     }
 
-    public void remove(Object owner) {
+    public void canvasRemove(Object owner) {
         shapes.remove(owner);
         redraw();
     }
 
     /** English color names are preferred; original German names remain supported. */
-    public void setDrawingColor(String colorName) {
-        Color color = switch (colorName) {
-            case "red", "rot" -> Color.RED;
-            case "blue", "blau" -> Color.BLUE;
-            case "yellow", "gelb" -> Color.YELLOW;
-            case "green", "gruen" -> Color.GREEN;
-            case "purple", "lila" -> Color.MAGENTA;
-            case "white", "weiss" -> Color.WHITE;
-            default -> Color.BLACK;
-        };
+    public void setDrawingColor(Color color) {
         graphics.setColor(color);
     }
 
@@ -107,6 +118,6 @@ public class RoomCanvas {
         }
     }
 
-    private record ColoredShape(Shape shape, String color) {
+    private record ColoredShape(Shape shape, Color color) {
     }
 }
