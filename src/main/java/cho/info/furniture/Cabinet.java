@@ -14,7 +14,7 @@ public class Cabinet extends Furniture {
     }
 
     @Override
-    protected Shape createShape() {
+    public Shape createShape() {
         GeneralPath cabinet = new GeneralPath();
         cabinet.moveTo(0, 0);
         cabinet.lineTo(getWidth(), 0);

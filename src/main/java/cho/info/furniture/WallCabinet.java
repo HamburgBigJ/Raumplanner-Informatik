@@ -25,12 +25,12 @@ public class WallCabinet extends Furniture {
 
     private void shapeToArray() {
         for (int i = 0; i < cabinetCount; i++) {
-            cabinets.add(new Cabinet(getXPosition() + ((getWidth())*i), getYPosition(), getColor(), 0, getWidth(), getDepth()));
+            cabinets.add(new Cabinet(getXPos() + ((getWidth())*i), getYPos(), getColor(), 0, getWidth(), getDepth()));
         }
     }
 
     @Override
-    protected Shape createShape() {
+    public Shape createShape() {
         GeneralPath wallUnit = new GeneralPath();
         for (Cabinet cabinet : cabinets) {
             wallUnit.append(cabinet.getShape(), false);
@@ -40,9 +40,6 @@ public class WallCabinet extends Furniture {
 
     public void setCabinets(int a) {
         cabinetCount = a;
-        for (Cabinet cabinet : cabinets) {
-            Main.mainWindow.remove(cabinet);
-        }
         // TODO: DO not clear list when updating cabinets
         cabinets.clear();
         shapeToArray();

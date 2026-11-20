@@ -12,7 +12,7 @@ public class WashingMachine extends Furniture {
     }
 
     @Override
-    protected Shape createShape() {
+    public Shape createShape() {
         GeneralPath washingMachine = new GeneralPath();
         Rectangle2D frame = new Rectangle2D.Double(0, 0, getWidth(), getDepth());
         Shape drum = new Ellipse2D.Double(

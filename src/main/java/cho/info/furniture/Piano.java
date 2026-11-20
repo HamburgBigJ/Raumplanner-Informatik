@@ -9,11 +9,10 @@ import java.awt.geom.Rectangle2D;
 public class Piano extends Furniture {
     public Piano() {
         super(200, 80, Color.RED, 140, 60);
-        show();
     }
 
     @Override
-    protected Shape createShape() {
+    public Shape createShape() {
         GeneralPath piano = new GeneralPath();
         Rectangle2D body = new Rectangle2D.Double(0, 0, getWidth(), getDepth());
         Rectangle2D keyboard = new Rectangle2D.Double(

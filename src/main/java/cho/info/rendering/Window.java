@@ -1,6 +1,6 @@
 package cho.info.rendering;
 
-import cho.info.furniture.Furniture;
+import cho.info.GraphicObject;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -11,9 +11,7 @@ import java.awt.Graphics2D;
 import java.awt.Shape;
 import java.awt.image.BufferedImage;
 import java.io.Serial;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Window {
     //private static Window instance;
@@ -24,7 +22,7 @@ public class Window {
     private final BufferedImage canvasImage;
     private final Graphics2D graphics;
     private final Map<Object, ColoredShape> shapes = new LinkedHashMap<>();
-    private final ArrayList<Furniture> furnitures = new ArrayList<>();
+    private Map<String, GraphicObject> graphicObject = new HashMap<>();
 
     public Window(String title, int width, int height, Color backgroundColor) {
         this.backgroundColor = backgroundColor;
@@ -38,32 +36,32 @@ public class Window {
         clear();
     }
 
-    /*public static Window getInstance() {
-        if (instance == null) {
-            instance = new Window("Room Planner", 400, 400, Color.WHITE);
-        }
-        instance.setVisible(true);
-        return instance;
-    }*/
-
-    public void append(Furniture furniture) {
-        furnitures.add(furniture);
+    public void append(String key, GraphicObject object) {
+        graphicObject.put(key, object);
     }
 
-    public void remFurni(Furniture furniture) {
-        furnitures.remove(furniture);
+    public void remove(String key) {
+        graphicObject.remove(key);
     }
+
+    public void draw() {
+        graphicObject.forEach((key, graphicObject) -> {
+            graphicObject.setWindow(this);
+            graphicObject.show();
+        });
+    }
+
+    public void reDraw() {
+        graphicObject.forEach((key, graphicObject) -> {
+            graphicObject.reDraw();
+        });
+    }
+
 
     public void setVisible(boolean visible) {
         window.setVisible(visible);
     }
 
-    public void draw() {
-        for (Furniture furniture : furnitures) {
-            draw(this, furniture.getColor(), furniture.get);
-            pause(10);
-        }
-    }
 
     public void canvasDraw(Object owner, Color color, Shape shape) {
         // Redrawn objects move to the front of the drawing order.

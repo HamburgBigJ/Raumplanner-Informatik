@@ -15,7 +15,7 @@ public class Chair extends Furniture {
     }
 
     @Override
-    protected Shape createShape() {
+    public Shape createShape() {
         GeneralPath chair = new GeneralPath();
         chair.moveTo(0, 0);
         chair.lineTo(getWidth(), 0);

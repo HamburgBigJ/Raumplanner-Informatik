@@ -10,7 +10,7 @@ public class Table extends Furniture {
     }
 
     @Override
-    protected Shape createShape() {
+    public Shape createShape() {
         return new Ellipse2D.Double(0, 0, getWidth(), getDepth());
     }
 }
