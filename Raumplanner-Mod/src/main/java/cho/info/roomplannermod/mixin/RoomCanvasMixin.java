@@ -9,7 +9,7 @@ import info.cho.universalMixin.api.WidenAccess;
 import java.awt.*;
 
 @Mixin(Window.class)
-@WidenAccess(fields = {"graphics"})
+@WidenAccess(fields = { "graphics" })
 public class RoomCanvasMixin {
 
     @Shadow
