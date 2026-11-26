@@ -85,7 +85,6 @@ public class Window {
         redraw();
     }
 
-    /** English color names are preferred; original German names remain supported. */
     public void setDrawingColor(Color color) {
         graphics.setColor(color);
     }
