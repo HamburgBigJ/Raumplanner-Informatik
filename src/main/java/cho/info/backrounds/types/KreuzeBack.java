@@ -20,15 +20,7 @@ public class KreuzeBack extends GraphicObject {
 
     @Override
     protected Shape createShape() {
-        GeneralPath cabinet = new GeneralPath();
-        cabinet.moveTo(0, 0);
-        cabinet.lineTo(1, 0);
-        cabinet.lineTo(22, 22);
-        cabinet.lineTo(0, 22);
-        cabinet.lineTo(0, 0);
-        cabinet.lineTo(22, 33);
-        cabinet.moveTo(0, 33);
-        cabinet.lineTo(12, 0);
-        return cabinet;
+        //TODO: impement
+        return null;
     }
 }

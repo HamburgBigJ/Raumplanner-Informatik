@@ -55,6 +55,7 @@ public class Window {
             graphicObject.setWindow(this);
             graphicObject.show();
         });
+
     }
 
     public void reDraw() {
