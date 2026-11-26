@@ -1,5 +1,6 @@
 package cho.info;
 
+import cho.info.backrounds.BackgroundType;
 import cho.info.furniture.Chair;
 import cho.info.furniture.Piano;
 import cho.info.furniture.WallCabinet;
@@ -12,7 +13,7 @@ public class Main {
     public static Window mainWindow;
 
     public static void main(String[] args) {
-        mainWindow = new Window("Main Window", 600, 500, Color.WHITE);
+        mainWindow = new Window("Main Window", 600, 500, Color.WHITE, BackgroundType.KREUZE);
         mainWindow.setVisible(true);
         mainWindow.append("piano1", new Piano());
 

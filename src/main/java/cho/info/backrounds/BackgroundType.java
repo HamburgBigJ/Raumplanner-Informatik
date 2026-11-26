@@ -4,3 +4,4 @@ public enum BackgroundType {
     RASTER,
     KREUZE,
 }
+

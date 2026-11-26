@@ -17,10 +17,12 @@ public abstract class GraphicObject {
     private int rotation;
     private boolean isVisible = true;
 
+    //public static GraphicObject INSTANCE;
 
     public GraphicObject(int xPos, int yPos) {
         this.xPos = xPos;
         this.yPos = yPos;
+    //    if (INSTANCE == null) INSTANCE = this;
     }
 
     protected abstract Shape createShape();

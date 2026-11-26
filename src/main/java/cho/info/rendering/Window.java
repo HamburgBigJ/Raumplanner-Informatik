@@ -1,6 +1,8 @@
 package cho.info.rendering;
 
 import cho.info.GraphicObject;
+import cho.info.backrounds.BackTypeToObj;
+import cho.info.backrounds.BackgroundType;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -21,10 +23,11 @@ public class Window {
     private final Color backgroundColor;
     private final BufferedImage canvasImage;
     private final Graphics2D graphics;
+    private BackgroundType bType;
     private final Map<Object, ColoredShape> shapes = new LinkedHashMap<>();
     private Map<String, GraphicObject> graphicObject = new HashMap<>();
 
-    public Window(String title, int width, int height, Color backgroundColor) {
+    public Window(String title, int width, int height, Color backgroundColor, BackgroundType bType) {
         this.backgroundColor = backgroundColor;
         canvasImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
         graphics = canvasImage.createGraphics();
@@ -33,6 +36,7 @@ public class Window {
         window = new JFrame(title);
         window.setContentPane(drawingPanel);
         window.pack();
+        this.bType = bType;
         clear();
     }
 
@@ -45,6 +49,8 @@ public class Window {
     }
 
     public void draw() {
+        BackTypeToObj.getObject(bType).setWindow(this);
+        BackTypeToObj.getObject(bType).draw();
         graphicObject.forEach((key, graphicObject) -> {
             graphicObject.setWindow(this);
             graphicObject.show();
@@ -52,6 +58,8 @@ public class Window {
     }
 
     public void reDraw() {
+        BackTypeToObj.getObject(bType).setWindow(this);
+        BackTypeToObj.getObject(bType).reDraw();
         graphicObject.forEach((key, graphicObject) -> {
             graphicObject.reDraw();
         });
