@@ -14,6 +14,8 @@ public abstract class GraphicObject {
     private Color color = Color.BLUE;
     private int xPos;
     private int yPos;
+    private int depth;
+    private int width;
     private int rotation;
     private boolean isVisible = true;
 

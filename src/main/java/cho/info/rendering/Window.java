@@ -3,6 +3,8 @@ package cho.info.rendering;
 import cho.info.GraphicObject;
 import cho.info.backrounds.BackTypeToObj;
 import cho.info.backrounds.BackgroundType;
+import lombok.Data;
+import lombok.Getter;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -13,6 +15,7 @@ import java.awt.Graphics2D;
 import java.awt.Shape;
 import java.awt.image.BufferedImage;
 import java.io.Serial;
+import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 
 public class Window {
@@ -25,6 +28,7 @@ public class Window {
     private final Graphics2D graphics;
     private BackgroundType bType;
     private final Map<Object, ColoredShape> shapes = new LinkedHashMap<>();
+    @Getter
     private Map<String, GraphicObject> graphicObject = new HashMap<>();
 
     public Window(String title, int width, int height, Color backgroundColor, BackgroundType bType) {
@@ -40,8 +44,20 @@ public class Window {
         clear();
     }
 
-    public void append(String key, GraphicObject object) {
-        graphicObject.put(key, object);
+    public void append(String key, Class<? extends GraphicObject> clzz) {
+        try {
+            graphicObject.put(key, clzz.getDeclaredConstructor().newInstance());
+        } catch (RuntimeException e) {
+            throw new RuntimeException(e);
+        } catch (InvocationTargetException e) {
+            throw new RuntimeException(e);
+        } catch (InstantiationException e) {
+            throw new RuntimeException(e);
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
+        } catch (NoSuchMethodException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void remove(String key) {
@@ -104,6 +120,14 @@ public class Window {
             graphics.draw(coloredShape.shape());
         }
         drawingPanel.repaint();
+    }
+
+    public int getWindowHeight() {
+        return drawingPanel.getHeight();
+    }
+
+    public int getWindowWidth() {
+        return drawingPanel.getWidth();
     }
 
     private void clear() {

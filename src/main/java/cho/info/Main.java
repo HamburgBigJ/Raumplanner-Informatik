@@ -13,9 +13,9 @@ public class Main {
     public static Window mainWindow;
 
     public static void main(String[] args) {
-        mainWindow = new Window("Main Window", 600, 500, Color.WHITE, BackgroundType.KREUZE);
+        mainWindow = new Window("Main Window", 600, 500, Color.WHITE, BackgroundType.RASTER);
         mainWindow.setVisible(true);
-        mainWindow.append("piano1", new Piano());
+        mainWindow.append("piano1", Piano.class);
 
         mainWindow.draw();
     }
