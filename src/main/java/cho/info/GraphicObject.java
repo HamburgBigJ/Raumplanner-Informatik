@@ -27,6 +27,8 @@ public abstract class GraphicObject {
     //    if (INSTANCE == null) INSTANCE = this;
     }
 
+    // TODO: add snapping methodes evry 50 u
+
     protected abstract Shape createShape();
 
     public final Shape getShape() {
